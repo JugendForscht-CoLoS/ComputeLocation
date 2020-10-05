@@ -22,7 +22,7 @@ public class CpLLocationManager {
     }
     public var delegate: CpLLocationManagerDelegate?
     
-    init(characteristic: CpLCharacteristicLink, on peripheral: CBPeripheral, queue: DispatchQueue!, delegate: CpLLocationManagerDelegate!) {
+    public init(characteristic: CpLCharacteristicLink, on peripheral: CBPeripheral, queue: DispatchQueue!, delegate: CpLLocationManagerDelegate!) {
         
         self.peripheral = peripheral
         input = CpLCharacteristic(characteristic, delegate: self)
