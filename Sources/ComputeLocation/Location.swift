@@ -105,6 +105,8 @@ extension CpLLocationManager: CpLCharacteristicDelegate {
             
             if let azimut2 = Double(stringInput2.0), let elevation2 = Double(stringInput2.1) {
                 
+                print("\(azimut1) \(azimut2) \(elevation1) \(elevation2)")
+                
                 self.locations.append(self.getCoordinates(azimuts: (azimut1, azimut2), elevations: (elevation1, elevation2), time: characteristic.timeOfBackup.timeInSec, date: characteristic.timeOfBackup.dateInSec))
             }
         }
