@@ -44,7 +44,7 @@ public class CpLLocationManager {
         
         let phi = atan( -1 * tan(elevation2) * cos(azimut2 - Double.pi) - sin(azimut2 - Double.pi) * (azimut2 - azimut1) / (elevation2 - elevation1))
         
-        let woz = (54000 / 15 * Double.pi) * (atan( sin(azimut2 - Double.pi) / (cos(azimut2 - Double.pi) * sin(phi) + tan(elevation2) *  cos(phi))) + Double.pi)
+        let woz = (54000 / (15 * Double.pi)) * (atan( sin(azimut2 - Double.pi) / (cos(azimut2 - Double.pi) * sin(phi) + tan(elevation2) *  cos(phi))) + Double.pi)
         let lambda = (15 * Double.pi / 54000) * (woz - getZG(Double(date)) - Double(time))
         
         return CLLocationCoordinate2D(latitude: (180 / Double.pi) * phi, longitude: (180 / Double.pi) * lambda)
