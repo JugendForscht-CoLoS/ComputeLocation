@@ -47,6 +47,9 @@ public class CpLLocationManager {
         let woz = (54000 / (15 * Double.pi)) * (atan( sin(azimut2 - Double.pi) / (cos(azimut2 - Double.pi) * sin(phi) + tan(elevation2) *  cos(phi))) + Double.pi)
         let lambda = (15 * Double.pi / 54000) * (woz - getZG(Double(date)) - Double(time))
         
+        print(woz)
+        print(lambda)
+        
         return CLLocationCoordinate2D(latitude: (180 / Double.pi) * phi, longitude: (180 / Double.pi) * lambda)
     }
 }
