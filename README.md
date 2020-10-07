@@ -17,29 +17,29 @@ Dokumentation
 
 ###### Initializers:
 
-..* `init(characteristic: CpLCharacteristicLink, on peripheral: CBPeripheral, queue: DispatchQueue?, delegate: CpLLocationManagerDelegate?)`
+* `init(characteristic: CpLCharacteristicLink, on peripheral: CBPeripheral, queue: DispatchQueue?, delegate: CpLLocationManagerDelegate?)`
 
 ###### Fields:
 
-..* `var locations: [CLLocationCoordinate2D] {get}`
-..*  `var delegate: CpLLocationManagerDelegate?`
+* `var locations: [CLLocationCoordinate2D] {get}`
+*  `var delegate: CpLLocationManagerDelegate?`
 
 ###### Methods
 
-..* `static func getCoordinates(azimuts: (Double, Double), elevations: (Double, Double), time: Int, date: Int) -> CLLocationCoordinate2D`
-..* `func startUpdatingLocation()`
+* `static func getCoordinates(azimuts: (Double, Double), elevations: (Double, Double), time: Int, date: Int) -> CLLocationCoordinate2D`
+* `func startUpdatingLocation()`
 
 #### CpLLocationManagerDelegate: `protocol CpLLocationManagerDelegate`
 
-..* `func locationManager(_ locationManager: CpLLocationManager, didUpdateLocations locations: [CLLocationCoordinate2D])`
+* `func locationManager(_ locationManager: CpLLocationManager, didUpdateLocations locations: [CLLocationCoordinate2D])`
 
 #### CpLCharacteristicLink: `struct CpLCharacteristicLink`
 
 ###### Initializers:
 
-..* `init(service: CBUUID, characteristic: CBUUID)`
+* `init(service: CBUUID, characteristic: CBUUID)`
 
 ###### Fields:
 
-..* `let service: CBUUID`
-..* `let characteristic: CBUUID`
+* `let service: CBUUID`
+* `let characteristic: CBUUID`
