@@ -94,14 +94,11 @@ extension CpLPeripheral: CBCentralManagerDelegate {
                 self.manager.connect(self.peripheral, options: nil)
             }
         }
-        
-        print("found \(peripheral)")
     }
     
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         
         self.connected = true
-        print("connected")
         
         if let characteristics = self.characteristics {
             
@@ -201,8 +198,6 @@ extension CpLPeripheral: CBPeripheralDelegate {
         
         if let characteristics = service.characteristics {
             
-            print("service \(service.uuid.uuidString) contains \(characteristics.count) characteristics")
-            
             for characteristic in characteristics {
                 
                 for c in self.characteristics {
@@ -212,14 +207,9 @@ extension CpLPeripheral: CBPeripheralDelegate {
                         c.service = service
                         c.characteristic = characteristic
                         peripheral.readValue(for: characteristic)
-                        print("active read order for \(characteristic.uuid.uuidString)")
                         self.peripheral.setNotifyValue(true, for: characteristic)
                     }
                 }
-                
-//                peripheral.readValue(for: characteristic)
-//                print("active read order for \(characteristic.uuid.uuidString)")
-//                self.peripheral.setNotifyValue(true, for: characteristic)
             }
         }
     }

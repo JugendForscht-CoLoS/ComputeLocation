@@ -22,7 +22,7 @@ public class CpLLocationManager {
     }
     public var delegate: CpLLocationManagerDelegate?
     
-    public init(characteristic: CpLCharacteristicLink, on peripheral: CBPeripheral, queue: DispatchQueue!, delegate: CpLLocationManagerDelegate!) {
+    public init(characteristic: CpLCharacteristicLink, on peripheral: CBPeripheral, queue: DispatchQueue?, delegate: CpLLocationManagerDelegate?) {
         
         self.peripheral = peripheral
         input = CpLCharacteristic(characteristic, delegate: self)
@@ -35,7 +35,7 @@ public class CpLLocationManager {
         robot = CpLPeripheral(peripheral, with: [input], queue: queue)
     }
     
-    private func getCoordinates(azimuts: (Double, Double), elevations: (Double, Double), time: Int, date: Int) -> CLLocationCoordinate2D {
+    public static func getCoordinates(azimuts: (Double, Double), elevations: (Double, Double), time: Int, date: Int) -> CLLocationCoordinate2D {
         
         let azimut1 = (Double.pi / 180) * azimuts.0
         let azimut2 = (Double.pi / 180) * azimuts.1
@@ -46,10 +46,7 @@ public class CpLLocationManager {
         
         let woz = (648000 / (15 * Double.pi)) * (atan( sin(azimut2 - Double.pi) / (cos(azimut2 - Double.pi) * sin(phi) + tan(elevation2) *  cos(phi))) + Double.pi)
         let lambda = (15 * Double.pi / 648000) * (woz - getZG(Double(date)) - Double(time))
-        
-        print(woz)
-        print(lambda)
-        
+
         return CLLocationCoordinate2D(latitude: (180 / Double.pi) * phi, longitude: (180 / Double.pi) * lambda)
     }
 }
@@ -108,9 +105,7 @@ extension CpLLocationManager: CpLCharacteristicDelegate {
             
             if let azimut2 = Double(stringInput2.0), let elevation2 = Double(stringInput2.1) {
                 
-                print("\(azimut1) \(azimut2) \(elevation1) \(elevation2)")
-                
-                self.locations.append(self.getCoordinates(azimuts: (azimut1, azimut2), elevations: (elevation1, elevation2), time: characteristic.timeOfBackup.timeInSec, date: characteristic.timeOfBackup.dateInSec))
+                self.locations.append(CpLLocationManager.getCoordinates(azimuts: (azimut1, azimut2), elevations: (elevation1, elevation2), time: characteristic.timeOfBackup.timeInSec, date: characteristic.timeOfBackup.dateInSec))
             }
         }
     }
