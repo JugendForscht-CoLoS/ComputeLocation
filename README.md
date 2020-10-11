@@ -24,7 +24,7 @@ Dokumentation
 * `var locations: [CLLocationCoordinate2D] {get}`
 *  `var delegate: CpLLocationManagerDelegate?`
 
-###### Methods
+###### Methods:
 
 * `static func getCoordinates(azimuts: (Double, Double), elevations: (Double, Double), time: Int, date: Int) -> CLLocationCoordinate2D`
 * `func startUpdatingLocation()`
