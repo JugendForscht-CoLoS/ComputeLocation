@@ -9,7 +9,7 @@ Der Standort des Benutzers wird mit Hilfe mathematischer Methoden anhand des Son
 Verwendung
 --------------
 
-ComputeLocation stellt Methoden zur manuellen und automatischen Standortsberechnung bereit. Durch manuelle Eingabe von zwei aufeinanderfolgenden Sonnenständen, kann der Standort des Benutzers bestimmt werden. Bei der automatischen Variante, handelt es sich um eine BLE-Schnittstelle um einen Messroboter zu verbinden. Sobald dieser neue Messungen bereit stellt, wird der Standort automatisch aktualisiert.
+ComputeLocation stellt Methoden zur manuellen und automatischen Standortsberechnung bereit. Durch manuelle Eingabe von zwei aufeinanderfolgenden Sonnenständen kann der Standort des Benutzers bestimmt werden. Bei der automatischen Variante handelt es sich um eine BLE-Schnittstelle zur Verbindung eines Messroboter. Sobald dieser neue Messungen bereit stellt, wird der Standort automatisch aktualisiert.
 
 Dokumentation
 -----------------
@@ -19,7 +19,7 @@ Dokumentation
 
 * `init(characteristic: CpLCharacteristicLink, on peripheral: CBPeripheral, queue: DispatchQueue?, delegate: CpLLocationManagerDelegate?)`
 
-###### Fields:
+###### Properties:
 
 * `var locations: [CLLocationCoordinate2D] {get}`
 *  `var delegate: CpLLocationManagerDelegate?`
@@ -39,7 +39,7 @@ Dokumentation
 
 * `init(service: CBUUID, characteristic: CBUUID)`
 
-###### Fields:
+###### Properties:
 
 * `let service: CBUUID`
 * `let characteristic: CBUUID`
